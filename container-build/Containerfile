@@ -6,9 +6,9 @@ EXPOSE 8080
 run sed -i "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf && \
     sed -i "s/#ServerName www.example.com/Servername localhost/g" /etc/httpd/conf/httpd.conf
 
-RUN chgrp -R 0 /var/www/html /var/run/https /var/log/httpd && \
-    chmod -R g=u /var/www/html /var/run/https /var/log/httpd
+RUN chgrp -R 0 /var/www/html /var/run/httpd /var/log/httpd && \
+    chmod -R g=u /var/www/html /var/run/httpd /var/log/httpd
 
 USER 1001
 
-CMD /usr/run/httpd -DFOREGROUND
+CMD /usr/bin/httpd -DFOREGROUND
